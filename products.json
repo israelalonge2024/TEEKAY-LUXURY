@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Teekay Chrono",
+        "price": 350,
+        "image": "images/chrono.jpg",
+        "description": "Luxury chronograph watch with precision movement and sapphire crystal."
+    },
+    {
+        "id": 2,
+        "name": "Teekay Classic",
+        "price": 275,
+        "image": "images/classic.jpg",
+        "description": "Timeless elegance with a minimalist design and genuine leather strap."
+    },
+    {
+        "id": 3,
+        "name": "Teekay Diver",
+        "price": 420,
+        "image": "images/diver.jpg",
+        "description": "Professional diving watch with 200m water resistance and luminescent markers."
+    },
+    {
+        "id": 4,
+        "name": "Teekay GMT",
+        "price": 390,
+        "image": "images/gmt.jpg",
+        "description": "Dual timezone watch for the global traveler with 24-hour bezel."
+    },
+    {
+        "id": 5,
+        "name": "Teekay Heritage",
+        "price": 450,
+        "image": "images/heritage.jpg",
+        "description": "Vintage-inspired timepiece with hand-wound mechanical movement."
+    },
+    {
+        "id": 6,
+        "name": "Teekay Skeleton",
+        "price": 500,
+        "image": "images/skeleton.jpg",
+        "description": "Exquisite skeleton design revealing the intricate mechanical movement."
+    }
+]
