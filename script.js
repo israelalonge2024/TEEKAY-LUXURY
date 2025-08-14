@@ -51,13 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Load products from JSON
-    fetch('products.json')
-        .then(response => response.json())
-        .then(products => {
-            displayProducts(products);
-        })
-        .catch(error => console.error('Error loading products:', error));
-
+    // Load products from external GitHub repo
+fetch('https://raw.githubusercontent.com/israelalonge2024/products-data/main/products.json')
+  .then(response => response.json())
+  .then(products => {
+    displayProducts(products);
+  })
+  .catch(error => console.error('Error loading products:', error));
     // Initialize cart and wishlist
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
