@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load products from JSON
     // Load products from external GitHub repo
-fetch('https://raw.githubusercontent.com/israelalonge2024/products-data/main/products.json')
+fetch('https://raw.githubusercontent.com/israelalonge2024/Products-data/main/products.json')
   .then(response => response.json())
   .then(products => {
     displayProducts(products);
