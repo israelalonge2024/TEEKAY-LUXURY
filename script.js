@@ -53,10 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load products from JSON
     // Load products from external GitHub repo
 // Fetch products from GitHub
+// Fetch products from GitHub
 fetch('https://raw.githubusercontent.com/israelalonge2024/Products-data/main/products.json')
   .then(response => response.json())
   .then(products => {
-    console.log("Products loaded:", products); // debug
+    console.log("Products loaded:", products); // check if data arrives
     displayProducts(products);
   })
   .catch(error => console.error('Error loading products:', error));
@@ -77,7 +78,8 @@ function displayProducts(products) {
     div.innerHTML = `
       <img src="${product.image}" alt="${product.name}" class="product-img">
       <h3>${product.name}</h3>
-      <p>Price: ${product.price}</p>
+      <p>${product.description}</p>
+      <p><strong>$${product.price}</strong></p>
       <button onclick="addToCart(${product.id})">Add to Cart</button>
       <button onclick="addToWishlist(${product.id})">Add to Wishlist</button>
     `;
@@ -116,7 +118,6 @@ function addToWishlist(productId) {
 // Initial update
 updateCartCount();
 updateWishlistCount();
-
     // Modal functionality
     const cartModal = document.getElementById('cart-modal');
     const wishlistModal = document.getElementById('wishlist-modal');
