@@ -52,17 +52,70 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load products from JSON
     // Load products from external GitHub repo
+// Fetch products from GitHub
 fetch('https://raw.githubusercontent.com/israelalonge2024/Products-data/main/products.json')
   .then(response => response.json())
   .then(products => {
+    console.log("Products loaded:", products); // debug
     displayProducts(products);
   })
   .catch(error => console.error('Error loading products:', error));
-    // Initialize cart and wishlist
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    updateCartCount();
-    updateWishlistCount();
+
+// Display products
+function displayProducts(products) {
+  const container = document.getElementById('products-container'); 
+  if (!container) {
+    console.error("❌ Missing <div id='products-container'></div> in HTML");
+    return;
+  }
+  container.innerHTML = '';
+
+  products.forEach(product => {
+    const div = document.createElement('div');
+    div.classList.add('product-card');
+
+    div.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" class="product-img">
+      <h3>${product.name}</h3>
+      <p>Price: ${product.price}</p>
+      <button onclick="addToCart(${product.id})">Add to Cart</button>
+      <button onclick="addToWishlist(${product.id})">Add to Wishlist</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+// Initialize cart and wishlist
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+// Update cart and wishlist counts
+function updateCartCount() {
+  const el = document.getElementById('cart-count');
+  if (el) el.textContent = cart.length;
+}
+
+function updateWishlistCount() {
+  const el = document.getElementById('wishlist-count');
+  if (el) el.textContent = wishlist.length;
+}
+
+// Cart/Wishlist actions
+function addToCart(productId) {
+  cart.push(productId);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+}
+
+function addToWishlist(productId) {
+  wishlist.push(productId);
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  updateWishlistCount();
+}
+
+// Initial update
+updateCartCount();
+updateWishlistCount();
 
     // Modal functionality
     const cartModal = document.getElementById('cart-modal');
